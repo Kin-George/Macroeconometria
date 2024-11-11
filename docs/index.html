@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-transition="zoom">
+					<h1 style="font-size: 40px;">Paper: Taylor Rule in Practice: Evidence from Turkey</h1>
+					<h2 style="font-size: 30px;">Autores: Nejla Adanur Aklan & Mehmet Nargelecekenler</h2>
+					<h2 style="font-size: 30px;">Jorge M. Orozco</h2>
+					<h2 style="font-size: 30px;">Macroeconometria</h2>
+					<h2 style="font-size: 20px">Universidad Alberto Hurtado</h2>
+				</section>
+
+				<section data-transition="convex">
+					<h1 style="font-size:30px">¿Qué es la regla de Taylor?</h1>
+					<p style="font-size: 20px; text-align: justify;">Es un indicador para determinar el tipo de interes necesario para estabilizar la dinamica economica de corto plazo, pero sin comprometer el crecimiento economico.</p>
+					$$R_{t}=\tilde{r}+\alpha_1(\pi_{t}-\bar{\pi})+\alpha_2(Y_{t}-\bar{Y})$$
+					<p style="font-size: 20px; text-align: justify;">Mecanismo de compromiso: Inflación deseada</p>
+				</section>
+
+				<section>
+					<h1 style="font-size: 40px;">Breve Literatura</h1>
+					<ul style="font-size: 25px; list-style-type: circle;">
+						<li>Desbalance en las cuentas del sector público en Turquía son la razón principal de que esta no pudiera controlar la inflación (1970s-2000s)</li>
+						<li>Turquía se sometió en los 2000s a un programa del IMF para obtener estabilidad financiera.</li>
+						<li>Cambio de régimen: de tasa de cambio fija a una tasa de cambio flexible.</li>
+					</ul>
+				</section>
+
+				<section data-transition="zoom">
+					<h1 style="font-size: 30px;">Metodologia: Backward-looking reaction function</h1>
+					<p style="font-size: 25px;">$$i_{t}^{*}=\alpha+\beta(\pi_{t}-\pi_{t}^{*})+\gamma x_{t} \rightarrow r_{t}^{*}=\bar{r}+\beta(\pi_{t}-\pi_{t}^{*})+\gamma x_{t}$$</p>
+					<p style="font-size: 25px;">Definimos: $\tilde{\pi_{t}}=\pi_{t}-\pi_{t}^{*}, \tilde{x}=x_{t}-x_{t}^{*}$</p>
+					<p style="font-size: 25px;">$$r_{t}^{*}=\bar{r}+\beta \tilde{\pi_{t-1}}+\gamma \bar{x_{t-1}}$$</p>
+					<p style="font-size: 25px;">El banco central desea tasa de interés suavizadas: $r_{t}=(1-p)r_{t}^{*}+pr_{t-1}+v_{t}$</p>
+					<p style="font-size: 25px;">Sustituyendo el mecanismo de suavizado en la ecuación anterior: </p>
+					<p style="font-size: 25px;">$$r_{t}=1-p(\bar{r}+\beta \tilde{\pi_{t-1}}+\gamma \tilde{x_{t-1}})+pr_{t-1}+\epsilon_{t}$$</p>
+				</section>
+
+				<section data-transition="concave">
+					<h1 style="font-size: 40px;">Datos</h1>
+					<ul style="font-size: 25px; list-style-type: circle;">
+						<li>Desviaciones de la inflación y de la producción</li>
+						<li>Inflation Targetting: 2002 (35%), 2003 (20%), 2004 (12%), 2005 (8%), 2006 (5%)</li>
+						<li>IPS (Industrial production series) luego de utilizar el filtro de Hodrick-Prescott</li>
+						<li>CBRT: Banco central de Turquía</li>
+					</ul>
+				</section>
+
+				<section data-transition="convex">
+					<h1 style="font-size: 30px;">Resultados</h1>
+					<p>En construcción: aún no consigo todos los datos.</p>
+				</section>
+				
+
+				
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+	</body>
+</html>
