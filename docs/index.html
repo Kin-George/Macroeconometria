@@ -17,37 +17,34 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-transition="zoom">
-					<h1 style="font-size: 40px;">Paper: Taylor Rule in Practice: Evidence from Turkey</h1>
-					<h2 style="font-size: 30px;">Autores: Nejla Adanur Aklan & Mehmet Nargelecekenler</h2>
-					<h2 style="font-size: 30px;">Jorge M. Orozco</h2>
+					<h1 style="font-size: 40px;">Paper: Trade and Income: Exploiting Time Series In Geography</h1>
+					<h2 style="font-size: 30px;">Autores: James Fayrer</h2>
 					<h2 style="font-size: 30px;">Macroeconometria</h2>
 					<h2 style="font-size: 20px">Universidad Alberto Hurtado</h2>
 				</section>
 
 				<section data-transition="convex">
-					<h1 style="font-size:30px">¿Qué es la regla de Taylor?</h1>
-					<p style="font-size: 20px; text-align: justify;">Es un indicador para determinar el tipo de interes necesario para estabilizar la dinamica economica de corto plazo, pero sin comprometer el crecimiento economico.</p>
-					$$R_{t}=\tilde{r}+\alpha_1(\pi_{t}-\bar{\pi})+\alpha_2(Y_{t}-\bar{Y})$$
-					<p style="font-size: 20px; text-align: justify;">Mecanismo de compromiso: Inflación deseada</p>
+					<h1 style="font-size:30px">Motivación</h1>
+					<p style="font-size: 20px; text-align: justify;">¿El incremento en el comercio viene acompañado de un incremento en el ingreso de los paises?</p>
+					<p style="font-size: 20px; text-align: justify;">Problema de identificación: Causalidad Reversa</p>
+					<p style="font-size: 20px; text-align: justify;">Solución propuesta: Variable instrumental</p>
 				</section>
 
 				<section>
-					<h1 style="font-size: 40px;">Breve Literatura</h1>
+					<h1 style="font-size: 40px;">Metodologia</h1>
 					<ul style="font-size: 25px; list-style-type: circle;">
-						<li>Desbalance en las cuentas del sector público en Turquía son la razón principal de que esta no pudiera controlar la inflación (1970s-2000s)</li>
-						<li>Turquía se sometió en los 2000s a un programa del IMF para obtener estabilidad financiera.</li>
-						<li>Cambio de régimen: de tasa de cambio fija a una tasa de cambio flexible.</li>
+						<li>Regresión: $ln(y_{it})=\gamma_{i}+\gamma_{t}+\beta (trade_{it})+\epsilon_{it}$</li>
+						<li>Instrumento geografico: $ln(trade_{ijt})=f_{t}(X_{ij},X_{i},X_{j})$</li>
+						<li>$X_{ij}$ = Caracteristicas invariantes en el tiempo de cada par de paises (distancia entre ellos)</li>
+						<li>$X_{i},X_{j}$ = Caracteristicas invariantes en el tiempo de cada pais (area geografica)</li>
+						<li>Nueva regresión: $ln(trade_{ijt})=X_{j}+\beta_{sea,t}\cdot ln(seadist_{ij})+\beta_{air,t}\cdot ln(airdist_{ij})$</li>
+						<li>La importancia de cada mecanismo de comercio puede variar: Si el pais antes utilizaba mucho comercio por mar, pero si el costo de hacerlo por aire es menor, tendera a cambiar.</li>
 					</ul>
 				</section>
 
 				<section data-transition="zoom">
-					<h1 style="font-size: 30px;">Metodologia: Backward-looking reaction function</h1>
-					<p style="font-size: 25px;">$$i_{t}^{*}=\alpha+\beta(\pi_{t}-\pi_{t}^{*})+\gamma x_{t} \rightarrow r_{t}^{*}=\bar{r}+\beta(\pi_{t}-\pi_{t}^{*})+\gamma x_{t}$$</p>
-					<p style="font-size: 25px;">Definimos: $\tilde{\pi_{t}}=\pi_{t}-\pi_{t}^{*}, \tilde{x}=x_{t}-x_{t}^{*}$</p>
-					<p style="font-size: 25px;">$$r_{t}^{*}=\bar{r}+\beta \tilde{\pi_{t-1}}+\gamma \bar{x_{t-1}}$$</p>
-					<p style="font-size: 25px;">El banco central desea tasa de interés suavizadas: $r_{t}=(1-p)r_{t}^{*}+pr_{t-1}+v_{t}$</p>
-					<p style="font-size: 25px;">Sustituyendo el mecanismo de suavizado en la ecuación anterior: </p>
-					<p style="font-size: 25px;">$$r_{t}=1-p(\bar{r}+\beta \tilde{\pi_{t-1}}+\gamma \tilde{x_{t-1}})+pr_{t-1}+\epsilon_{t}$$</p>
+					<h1 style="font-size: 30px;">Preliminares</h1>
+					<img class="fragment" data-fragment-index="1" fig-align:left src="https://github.com/Kin-George/Macroeconometria/blob/main/docs/img/fig1.png?raw=true" alt="Grafico animado 1", width="90%">
 				</section>
 
 				<section data-transition="concave">
