@@ -17,28 +17,26 @@
 		<div class="reveal">
 			<div class="slides">
 				<section data-transition="zoom">
-					<h1 style="font-size: 40px;">Paper: Trade and Income: Exploiting Time Series In Geography</h1>
-					<h2 style="font-size: 30px;">Autores: James Fayrer</h2>
+					<h1 style="font-size: 40px;">Paper: Pronóstico de la demanda mensual de electricidad con series de tiempo</h1>
+					<h2 style="font-size: 30px;">Autores: Victor Gil</h2>
 					<h2 style="font-size: 30px;">Macroeconometria</h2>
 					<h2 style="font-size: 20px">Universidad Alberto Hurtado</h2>
 				</section>
 
 				<section data-transition="convex">
 					<h1 style="font-size:30px">Motivación</h1>
-					<p style="font-size: 20px; text-align: justify;">¿El incremento en el comercio viene acompañado de un incremento en el ingreso de los paises?</p>
-					<p style="font-size: 20px; text-align: justify;">Problema de identificación: Causalidad Reversa</p>
-					<p style="font-size: 20px; text-align: justify;">Solución propuesta: Variable instrumental</p>
+					<p style="font-size: 20px; text-align: justify;">Los productores de energia necesitan predicciones para formular politicas y estrategias de comercializacion.</p>
+					<p style="font-size: 20px; text-align: justify;">Los precios de la energia muestran un comportamiento volatil historico.</p>
+					<p style="font-size: 20px; text-align: justify;">Un modelo con una buena capacidad predictiva es util, y necesario en el ambito de la industria electrica.</p>
 				</section>
 
 				<section>
 					<h1 style="font-size: 40px;">Metodologia</h1>
 					<ul style="font-size: 25px; list-style-type: circle;">
-						<li>Regresión: $ln(y_{it})=\gamma_{i}+\gamma_{t}+\beta (trade_{it})+\epsilon_{it}$</li>
-						<li>Instrumento geografico: $ln(trade_{ijt})=f_{t}(X_{ij},X_{i},X_{j})$</li>
-						<li>$X_{ij}$ = Caracteristicas invariantes en el tiempo de cada par de paises (distancia entre ellos)</li>
-						<li>$X_{i},X_{j}$ = Caracteristicas invariantes en el tiempo de cada pais (area geografica)</li>
-						<li>Nueva regresión: $ln(trade_{ijt})=X_{j}+\beta_{sea,t}\cdot ln(seadist_{ij})+\beta_{air,t}\cdot ln(airdist_{ij})$</li>
-						<li>La importancia de cada mecanismo de comercio puede variar: Si el pais antes utilizaba mucho comercio por mar, pero si el costo de hacerlo por aire es menor, tendera a cambiar.</li>
+						<li>Modelo Aditivo: $Y_{t}=T_{t}+S_{t}+\epsilon_{t}$</li>
+						<li>Modelo general de tendencia: $T_{t}=\beta_{0}+\beta_1 t + \beta_2 t^{2} + ... + \beta_{\rho} t^{\rho}$</li>
+						<li>Periodo de entrenamiento: 2008 - 2013</li>
+						<li>Periodo de validación: 2014</li>
 					</ul>
 				</section>
 
@@ -46,30 +44,91 @@
 					<h1 style="font-size: 30px;">Preliminares</h1>
 					<div class="r-stack">
 					<img class="fragment" data-fragment-index="1" fig-align:left src="https://github.com/Kin-George/Macroeconometria/blob/main/docs/img/fig1.png?raw=true" alt="Grafico animado 1", width="90%">
-					<img class="fragment" data-fragment-index="2" fig-align:left src="https://github.com/Kin-George/Macroeconometria/blob/main/docs/img/fig2.png?raw=true" alt="Grafico animado 1", width="90%">
 					</div>
 				</section>
 
 				<section data-transition="concave">
 					<h1 style="font-size: 40px;">Datos</h1>
 					<ul style="font-size: 25px; list-style-type: circle;">
-						<li>IMF Direction of Trade</li>
-						<li>CEPII</li>
-						<li>CIESIN</li>
+						<li>Demanda de energia electrica (GWh) SIN, Colombia</li>
 					</ul>
 				</section>
 
 				<section data-transition="convex">
 					<h1 style="font-size: 30px;">Resultados</h1>
-					<div class="r-stack">
-					<img class="fragment" data-fragment-index="1" fig-align:left src="https://github.com/Kin-George/Macroeconometria/blob/main/docs/img/fig3.png?raw=true" alt="Grafico animado 1", width="90%">
-					<img class="fragment" data-fragment-index="2" fig-align:left src="https://github.com/Kin-George/Macroeconometria/blob/main/docs/img/fig4.png?raw=true" alt="Grafico animado 1", width="90%">
-					</div>
+						<div style="transform: scale(0.4); transform-origin: top left; width: fit-content; margin: auto;">
+							<table style="border-collapse: collapse; text-align: center; border: 1px solid black; width: 100%;">
+							  <caption style="font-weight: bold; margin-bottom: 10px;">Estimaciones del modelo</caption>
+							  <thead>
+								<tr>
+								  <th style="border: 1px solid black;"></th>
+								  <th style="border: 1px solid black;" colspan="3">Modelo</th>
+								</tr>
+								<tr>
+								  <th style="border: 1px solid black;">Parámetros</th>
+								  <th style="border: 1px solid black;">Lineal</th>
+								  <th style="border: 1px solid black;">Cuadrático</th>
+								  <th style="border: 1px solid black;">Cúbico</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr><td style="border: 1px solid black;">&beta;<sub>0</sub></td><td style="border: 1px solid black;">4397.694</td><td style="border: 1px solid black;">4490.919</td><td style="border: 1px solid black;">4482</td></tr>
+								<tr><td style="border: 1px solid black;">&beta;<sub>1</sub></td><td style="border: 1px solid black;">11.09</td><td style="border: 1px solid black;">4.49</td><td style="border: 1px solid black;">5.618</td></tr>
+								<tr><td style="border: 1px solid black;">&beta;<sub>2</sub></td><td style="border: 1px solid black;">0</td><td style="border: 1px solid black;">0.07</td><td style="border: 1px solid black;">0.04</td></tr>
+								<tr><td style="border: 1px solid black;">&beta;<sub>3</sub></td><td style="border: 1px solid black;">0</td><td style="border: 1px solid black;">0</td><td style="border: 1px solid black;">0.0002</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>1</sub></td><td style="border: 1px solid black;">-75.98</td><td style="border: 1px solid black;">-75.98</td><td style="border: 1px solid black;">-73.97</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>2</sub></td><td style="border: 1px solid black;">-333.12</td><td style="border: 1px solid black;">-332.35</td><td style="border: 1px solid black;">-330.5</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>3</sub></td><td style="border: 1px solid black;">26.40</td><td style="border: 1px solid black;">27.80</td><td style="border: 1px solid black;">29.44</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>4</sub></td><td style="border: 1px solid black;">-116.73</td><td style="border: 1px solid black;">-114.87</td><td style="border: 1px solid black;">-113.4</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>5</sub></td><td style="border: 1px solid black;">54.40</td><td style="border: 1px solid black;">56.58</td><td style="border: 1px solid black;">57.86</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>6</sub></td><td style="border: 1px solid black;">-129.50</td><td style="border: 1px solid black;">-127.17</td><td style="border: 1px solid black;">-126.1</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>7</sub></td><td style="border: 1px solid black;">57.24</td><td style="border: 1px solid black;">59.57</td><td style="border: 1px solid black;">60.5</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>8</sub></td><td style="border: 1px solid black;">66.50</td><td style="border: 1px solid black;">68.67</td><td style="border: 1px solid black;">69.42</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>9</sub></td><td style="border: 1px solid black;">-13.29</td><td style="border: 1px solid black;">-11.42</td><td style="border: 1px solid black;">-10.86</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>10</sub></td><td style="border: 1px solid black;">77.80</td><td style="border: 1px solid black;">79.20</td><td style="border: 1px solid black;">79.59</td></tr>
+								<tr><td style="border: 1px solid black;">&delta;<sub>11</sub></td><td style="border: 1px solid black;">-92.06</td><td style="border: 1px solid black;">-91.28</td><td style="border: 1px solid black;">-91.09</td></tr>
+								<tr><td style="border: 1px solid black;">R<sup>2</sup></td><td style="border: 1px solid black;">0.9449</td><td style="border: 1px solid black;">0.9626</td><td style="border: 1px solid black;">0.9626</td></tr>
+								<tr><td style="border: 1px solid black;">R<sup>2</sup> Ajustado</td><td style="border: 1px solid black;">0.9355</td><td style="border: 1px solid black;">0.9556</td><td style="border: 1px solid black;">0.9551</td></tr>
+							  </tbody>
+							</table>
+						  </div>
 				</section>
-				
 
-				
+				<section>
+					<h1 style="font-size: 30px;">Resultados</h1>
+					<div style="transform: scale(0.8); transform-origin: top left; width: fit-content; margin: auto;">
+						<table style="border-collapse: collapse; text-align: center; border: 1px solid black; width: 100%;">
+						  <caption style="font-weight: bold; margin-bottom: 10px;">Criterios de selección</caption>
+						  <thead>
+							<tr>
+							  <th style="border: 1px solid black;">Indicador/Modelo</th>
+							  <th style="border: 1px solid black;">Lineal</th>
+							  <th style="border: 1px solid black;">Cuadrático</th>
+							  <th style="border: 1px solid black;">Cúbico</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr><td style="border: 1px solid black;">AIC</td><td style="border: 1px solid black;">985.05</td><td style="border: 1px solid black;">954.54</td><td style="border: 1px solid black;">956.35</td></tr>
+							<tr><td style="border: 1px solid black;">BIC</td><td style="border: 1px solid black;">1019.08</td><td style="border: 1px solid black;">991.00</td><td style="border: 1px solid black;">995.24</td></tr>
+							<tr><td style="border: 1px solid black;">R<sup>2</sup></td><td style="border: 1px solid black;">0.9355</td><td style="border: 1px solid black;">0.9556</td><td style="border: 1px solid black;">0.9551</td></tr>
+						  </tbody>
+						</table>
+					  </div>
+				</section>
+
+				<section>
+					<h1 style="font-size: 30px;">Resultados</h1>
+					<img class="fragment" data-fragment-index="1" fig-align:left src="https://github.com/Kin-George/Macroeconometria/blob/main/docs/img/fig2.png?raw=true" alt="Grafico animado 1", width="90%">
+				</section>
+
+				<section>
+					<h1 style="font-size: 30px;">Conclusiones</h1>
+					<p style="font-size: 20px; text-align: justify;">El modelo construido tiene una buena capacidad predictiva de la demanda de energia.</p>
+					<p style="font-size: 20px; text-align: justify;">Tiene un porcentaje de error en la predicción aceptable</p>
+					<p style="font-size: 20px; text-align: justify;">El modelo es simple e intuitivo, lo que buscan los hacedores de politica.</p>
+				</section>
 			</div>
+		</div>
 		</div>
 
 		<script src="dist/reveal.js"></script>
